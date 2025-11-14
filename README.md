@@ -14,7 +14,6 @@ The pipeline includes:
 - Comparison with **MedSAM**  
 - Postprocessing and 3D visualization  
 - Radiomics feature extraction  
-- Feature-based ML classification  
 
 Presentation slides and the full project report are included in this repository.
 
@@ -28,14 +27,17 @@ Presentation slides and the full project report are included in this repository.
 **Chronic Pancreatitis (SIMS Hospital)**
 - 14 labeled CT cases  
 - 50 unlabeled CT cases  
-- Useful for semi-supervised extensions
+  
+<img width="992" height="506" alt="image" src="https://github.com/user-attachments/assets/3ec7081f-34ea-4c97-a41c-30a2ffb063a4" />
+
 
 ---
 
 ## 🧠 Segmentation Models
 
 ### SwinUNETR (final model)
-- Hybrid Swin Transformer + UNETR architecture  
+- Hybrid Swin Transformer + UNETR architecture
+<img width="608" height="266" alt="image" src="https://github.com/user-attachments/assets/ffaf5e86-150c-4090-8fa1-0b011bc26663" />
 - Dice Score: **0.851**
 
 ### MedSAM (baseline)
@@ -49,23 +51,24 @@ SwinUNETR showed better spatial understanding and segmentation accuracy and was 
 1. **Preprocessing**  
    - HU windowing (WW: 400, WC: 40)  
    - Normalization and resizing  
+<img width="839" height="399" alt="image" src="https://github.com/user-attachments/assets/949230af-9357-4c96-ace7-9c5c7eaf04ba" />
 
 2. **Segmentation**  
    - SwinUNETR training and evaluation  
    - Dice-based validation  
    - Morphological postprocessing  
    - 3D visualization  
+<img width="618" height="338" alt="image" src="https://github.com/user-attachments/assets/f3d9d88c-0d76-44c6-84b8-56c5bb9e662a" />
 
 3. **Radiomics**  
    - Extracted features from segmented pancreas  
    - Examples: cluster prominence, entropy, contrast, IMC1, IMC2, homogeneity  
 
-4. **Classification**  
-   - Radiomic features used for ML-based CP vs. normal classification
-
 ---
 
 ## 🔍 Key Radiomic Features
+<img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/1de74327-acb4-4ed4-aa38-e6a4215f699c" />
+
 - Cluster Prominence  
 - Cluster Shade  
 - Cluster Tendency  
@@ -82,8 +85,9 @@ These features capture shape, texture, and intensity properties of the segmented
 
 ## 📈 Results
 - SwinUNETR achieved **0.851 DSC**, outperforming MedSAM  
-- Segmentation + radiomics pipeline successfully extracts meaningful differences between normal and CP cases  
-- Provides a foundation for early CP prognostication
+- Postprocessed segmentation masks showed clear pancreas boundaries with reduced noise  
+- Extracted a comprehensive set of radiomic features (texture, intensity, shape) from the segmented pancreas  
+- Segmentation + radiomics pipeline forms a strong base for downstream CP analysis
 
 ---
 
