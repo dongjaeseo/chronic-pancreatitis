@@ -1,123 +1,100 @@
 # Prognostication of Chronic Pancreatitis Using CT-Based Pancreas Segmentation
 
-A deep learning and radiomics workflow for pancreas segmentation and chronic pancreatitis analysis.
+A deep learning and radiomics pipeline for pancreas segmentation and chronic pancreatitis analysis.  
+Project completed as part of my Dual Degree at **IIT Madras**, supervised by **Prof. Ganapathy Krishnamurthi**.
 
-Overview
+---
 
-This project focuses on segmenting the pancreas from CT scans and extracting radiomic features for the prognostication of Chronic Pancreatitis (CP).
-The pipeline includes data preprocessing, pancreas segmentation using SwinUNETR, comparison with MedSAM, radiomic feature extraction, and classification.
+## 📌 Overview
+This project develops a workflow to segment the pancreas from CT scans and extract radiomic features for the prognostication of **Chronic Pancreatitis (CP)**.  
+The pipeline includes:
 
-This work was completed as part of my Dual Degree project at IIT Madras under the guidance of Prof. Ganapathy Krishnamurthi.
+- CT preprocessing with HU windowing  
+- Pancreas segmentation using **SwinUNETR**  
+- Comparison with **MedSAM**  
+- Postprocessing and 3D visualization  
+- Radiomics feature extraction  
+- Feature-based ML classification  
 
-📁 Project Structure
+Presentation slides and the full project report are included in this repository.
 
-Data Preprocessing
+---
 
-HU windowing (WW = 400, WC = 40)
+## 📁 Dataset
+**Normal Pancreas (CT-82 dataset)**
+- 82 patients  
+- High-quality manual pancreas labels  
 
-Normalization & resampling
+**Chronic Pancreatitis (SIMS Hospital)**
+- 14 labeled CT cases  
+- 50 unlabeled CT cases  
+- Useful for semi-supervised extensions
 
-Visualization of preprocessed CT slices
+---
 
-Segmentation Model
+## 🧠 Segmentation Models
 
-SwinUNETR implementation (MONAI)
+### SwinUNETR (final model)
+- Hybrid Swin Transformer + UNETR architecture  
+- Dice Score: **0.851**
 
-Comparison with MedSAM
+### MedSAM (baseline)
+- Dice Score: **0.79**
 
-Postprocessing (morphological ops, connected components)
+SwinUNETR showed better spatial understanding and segmentation accuracy and was used for downstream analysis.
 
-3D visualization of predicted pancreas
+---
 
-Radiomics
+## 🔧 Method Summary
+1. **Preprocessing**  
+   - HU windowing (WW: 400, WC: 40)  
+   - Normalization and resizing  
 
-Feature extraction from segmented regions
+2. **Segmentation**  
+   - SwinUNETR training and evaluation  
+   - Dice-based validation  
+   - Morphological postprocessing  
+   - 3D visualization  
 
-Key radiomic features for CP prognostication
+3. **Radiomics**  
+   - Extracted features from segmented pancreas  
+   - Examples: cluster prominence, entropy, contrast, IMC1, IMC2, homogeneity  
 
-Classification
+4. **Classification**  
+   - Radiomic features used for ML-based CP vs. normal classification
 
-Feature-based ML classification for normal vs. chronic pancreatitis
+---
 
-📊 Dataset
+## 🔍 Key Radiomic Features
+- Cluster Prominence  
+- Cluster Shade  
+- Cluster Tendency  
+- Contrast  
+- Correlation  
+- Entropy  
+- Energy  
+- Homogeneity (1 & 2)  
+- IMC 1 / IMC 2  
 
-Normal Pancreas (CT-82 dataset):
+These features capture shape, texture, and intensity properties of the segmented pancreas.
 
-82 CT scans with high-quality manual labels
+---
 
-Chronic Pancreatitis (SIMS Hospital):
+## 📈 Results
+- SwinUNETR achieved **0.851 DSC**, outperforming MedSAM  
+- Segmentation + radiomics pipeline successfully extracts meaningful differences between normal and CP cases  
+- Provides a foundation for early CP prognostication
 
-14 labeled cases
+---
 
-50 unlabeled cases (potential for SSL)
+## 🚀 Future Work
+- Semi-supervised learning using unlabeled SIMS data  
+- Larger, multi-institutional dataset  
+- Integration of clinical variables  
+- Improved feature selection  
+- End-to-end multimodal prognostication models  
 
-🧠 Segmentation Models
-SwinUNETR (final model)
+---
 
-Hybrid of Swin Transformer + UNETR
-
-Dice Score: 0.851
-
-MedSAM (baseline)
-
-Dice Score: 0.79
-
-SwinUNETR was selected due to better spatial understanding and performance on pancreas anatomy.
-
-🔍 Radiomic Feature Extraction
-
-Extracted features include:
-
-Texture: contrast, entropy, correlation
-
-Cluster-based: cluster shade, cluster prominence, cluster tendency
-
-Homogeneity: homogeneity 1 & 2
-
-Information-based: IMC1, IMC2
-
-Intensity-based: energy
-
-These features were used for downstream ML classification of CP vs. normal pancreas.
-
-🧩 Methodology Summary
-
-Data acquisition (CT-82 + SIMS Hospital)
-
-Preprocessing using HU windowing
-
-Training SwinUNETR for segmentation
-
-Model evaluation using DSC
-
-Postprocessing to clean segmentation masks
-
-3D visualization of pancreas structure
-
-Radiomic feature extraction
-
-Feature-based ML classification
-
-📈 Results
-
-SwinUNETR achieved 0.851 DSC
-
-Successful extraction of discriminative radiomic features
-
-Pipeline demonstrates potential for early CP prognostication
-
-📌 Future Work
-
-Semi-supervised learning using unlabeled SIMS data
-
-Larger multi-institutional dataset
-
-Integration of clinical metadata
-
-Improved feature selection and evaluation
-
-Potential extension to multimodal prediction
-
-🙏 Acknowledgements
-
-Special thanks to Prof. Ganapathy Krishnamurthi and Dr. Vel Murugan for their guidance and mentorship during this project.
+## 🙏 Acknowledgements
+Special thanks to **Prof. Ganapathy Krishnamurthi** and **Dr. Vel Murugan** for guidance and feedback throughout the project.
