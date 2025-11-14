@@ -67,7 +67,7 @@ SwinUNETR showed better spatial understanding and segmentation accuracy and was 
 ---
 
 ## 🔍 Key Radiomic Features
-<img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/1de74327-acb4-4ed4-aa38-e6a4215f699c" />
+<img width="615" height="333" alt="image" src="https://github.com/user-attachments/assets/94198176-2094-4b87-846e-1bae09c79427" />
 
 - Cluster Prominence  
 - Cluster Shade  
